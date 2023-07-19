@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8164733.svg)](https://doi.org/10.5281/zenodo.8164733)
+
 # periodic-time-vis
 
 Software prototype for the interactive visual analysis of event data to detect periodic behavior in the data without explicit knowledge of the period length.
