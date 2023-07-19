@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Periodic Time Visualization</title>
+
+  <link rel="shortcut icon" href="#">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="backend.css">
+  <script type="module" src="backend.js"></script>
+</head>
+<body>
+  <main>
+    <div id="background"></div>
+    <div id="suggestions-bar"><div class="wrapper"></div></div>
+    <time-slider id="time-slider"></time-slider>
+    <div id="controls" style="display:grid"></div>
+    <div id="vis"></div>
+  </main>
+  <footer>
+    <span class="buttons">
+      <fieldset class="button-group" grouped-rows>
+        <legend>
+          Visualization
+          <span title="Force the scatter plot visualization to be redrawn on every period length change. Uncheck this if the widget does not feel interactive."></span>
+        </legend>
+        <fieldset>
+          <input id="visualization-coupled" type="checkbox" checked>
+          <label for="visualization-coupled">Coupled</label>
+        </fieldset>
+      </fieldset>
+      <fieldset class="button-group" id="dataset-selector-buttons">
+        <legend>
+          Load dataset
+          <span title="Load one of the pre-defined datasets."></span>
+        </legend>
+      </fieldset>
+      <fieldset class="button-group">
+        <legend>
+          Upload dataset
+          <span title="Upload and visualize a custom dataset. This must be a JSON file with an array of objects with `x` and `y` coordinates, a `value` attribute [number], and a `time` attribute [number = UNIX timestamp, or string = Date()-parseable]."></span>
+        </legend>
+        <input id="upload-dataset" type="file" accept="application/json">
+      </fieldset>
+      <fieldset class="button-group">
+        <legend>
+          Visualized attribute
+          <span title="Select what attribute of the data to visualize in the pixel histograms. By default, they visualize the count of data items per bin."></span>
+        </legend>
+        <select id="visualized-attribute">
+          <option selected>count</option>
+          <option>average value</option>
+          <option>variance</option>
+        </select>
+      </fieldset>
+      <fieldset class="button-group">
+        <legend>
+          Display mode
+          <span title="Select which mode the markers in the scatter plots should be shown in."></span>
+        </legend>
+        <button id="color-selector">Color</button>
+        <button id="glyph-selector">Glyph</button>
+      </fieldset>
+      <fieldset class="button-group" id="color-scheme-controls">
+        <legend>
+          Color scheme
+          <span title="Change the color mapping in the scatter plot."></span>
+        </legend>
+      </fieldset>
+      <fieldset class="button-group" id="glyph-type-controls">
+        <legend>
+          Glyph type
+          <span title="Change the parametrized shape mapping in the scatter plot."></span>
+        </legend>
+      </fieldset>
+      <fieldset class="button-group" grouped-rows>
+        <legend>
+          Widget parameters
+          <span title="Change the number of context rows, color mapping, and presence of a legend in the widget."></span>
+        </legend>
+        <fieldset>
+          <label for="param-ybins">y bins:</label>
+          <input id="param-ybins" type="number" size="5" min="0">
+        </fieldset>
+        <fieldset>
+          <label for="param-color">Color:</label>
+          <select id="param-color">
+            <option hidden disabled selected value> - </option>
+            <option value="Blues">Blues</option>
+            <option value="BrBG">BrBG</option>
+            <option value="BuGn">BuGn</option>
+            <option value="BuPu">BuPu</option>
+            <option value="Cividis">Cividis</option>
+            <option value="Cool">Cool</option>
+            <option value="CubehelixDefault">CubehelixDefault</option>
+            <option value="GnBu">GnBu</option>
+            <option value="Greens">Greens</option>
+            <option value="Greys">Greys</option>
+            <option value="Inferno">Inferno</option>
+            <option value="Magma">Magma</option>
+            <option value="Oranges">Oranges</option>
+            <option value="OrRd">OrRd</option>
+            <option value="PiYG">PiYG</option>
+            <option value="Plasma">Plasma</option>
+            <option value="PRGn">PRGn</option>
+            <option value="PuBu">PuBu</option>
+            <option value="PuBuGn">PuBuGn</option>
+            <option value="PuOr">PuOr</option>
+            <option value="PuRd",>PuRd</option>
+            <option value="Purples">Purples</option>
+            <option value="Rainbow">Rainbow</option>
+            <option value="RdBu">RdBu</option>
+            <option value="RdGy">RdGy</option>
+            <option value="RdPu">RdPu</option>
+            <option value="RdYlBu">RdYlBu</option>
+            <option value="RdYlGn">RdYlGn</option>
+            <option value="Reds">Reds</option>
+            <option value="Sinebow">Sinebow</option>
+            <option value="Spectral">Spectral</option>
+            <option value="Turbo">Turbo</option>
+            <option value="Viridis">Viridis</option>
+            <option value="Warm">Warm</option>
+            <option value="YlGn">YlGn</option>
+            <option value="YlGnBu">YlGnBu</option>
+            <option value="YlOrBr">YlOrBr</option>
+            <option value="YlOrRd">YlOrRd</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <input id="widget-legend" type="checkbox" checked>
+          <label for="widget-legend">Legend</label>
+        </fieldset>
+      </fieldset>
+      <fieldset class="button-group" grouped-rows>
+        <legend>
+          Quality measure
+          <span title="Update what quality measure should be used for the vertical histograms and suggestions. By default, this is von Mises vector strength. By unchecking the box, the Shannon entropy of the histograms is used instead."></span>
+        </legend>
+        <fieldset>
+          <input name="measure" type="radio" id="use-vectorstrength" value="vectorstrength" checked>
+          <label for="use-vectorstrength">von Mises vectorstrength</label>
+        </fieldset>
+        <fieldset>
+          <input name="measure" type="radio" id="use-entropy" value="entropy">
+          <label for="use-entropy">Entropy estimation</label>
+        </fieldset>
+      </fieldset>
+    </span>
+    <span class="copyright">
+      &copy; Max Franke 2022&ndash;2023
+    </span>
+  </footer>
+</body>
+</html>

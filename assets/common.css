@@ -1,0 +1,109 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+body {
+  display: grid;
+  grid-template-areas: "main"
+                       "footer";
+  grid-template-rows: auto max-content;
+  grid-template-columns: 1fr;
+
+  gap: 1em;
+  padding: 1em;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+
+  background: slategray;
+  overflow: hidden;
+
+  font-family: sans-serif;
+}
+
+main,
+footer {
+  box-shadow: 0 0 2em 0 rgba(0, 0, 0, 0.8);
+  background: white;
+  color: black;
+}
+
+footer {
+  grid-area: footer;
+
+  padding: 0.5ex 1ex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5ex;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1ex;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1ex;
+  font-size: x-small;
+}
+
+.button-group :where(label, input) {
+  align-self: center;
+}
+
+.button-group legend {
+  font-family: sans-serif;
+  font-variant: small-caps;
+}
+
+.button-group :where(button, input, select) {
+  font-size: 0.9em;
+}
+
+.copyright {
+  font-size: x-small;
+}
+
+fieldset.button-group fieldset {
+  display: contents;
+}
+
+
+/* if large enough */
+@media (width >= 960px) {
+  body {
+    grid-template-areas: "main footer";
+    grid-template-columns: auto max-content;
+    grid-template-rows: 1fr;
+  }
+
+  footer {
+    max-width: 200px;
+    flex-direction: column;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+  }
+
+  .button-group[grouped-rows] {
+    flex-direction: column;
+  }
+  .button-group[grouped-rows] fieldset {
+    display: flex;
+    gap: 0.5ex;
+    border: none;
+    margin: 0;
+  }
+}

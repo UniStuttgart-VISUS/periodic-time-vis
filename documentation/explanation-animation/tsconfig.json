@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["es6", "es2018", "dom"],
+    "typeRoots": [
+      "./src/types",
+      "../../node_modules/@types"
+    ],
+    "outDir": "./dist",
+    "strict": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
+  },
+  "include": ["src"],
+  "exclude": ["../../node_modules", "**/__tests__/*"]
+}

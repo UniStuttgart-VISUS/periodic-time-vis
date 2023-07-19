@@ -1,0 +1,113 @@
+main {
+  display: grid;
+  grid-template-rows: max-content max-content 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "suggestions suggestions"
+                       "slider slider"
+                       "vis widget";
+  place-content: space-around;
+  place-content: center;
+
+  min-height: 100%;
+  gap: 2em;
+  padding: 2em;
+}
+
+main > * {
+  z-index: 2;
+}
+
+time-slider {
+  grid-area: slider;
+  justify-self: center;
+  width: 1200px;
+  height: 30px;
+}
+
+#controls {
+  grid-area: widget;
+  align-self: center;
+  justify-self: start;
+}
+
+#suggestions-bar {
+  grid-area: suggestions;
+
+  min-height: 240px;
+
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+#suggestions-bar > .wrapper {
+  display: flex;
+  gap: 1em;
+  padding: 2em;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+/* scrollbar at top */
+#suggestions-bar { transform: rotateX(180deg) }
+#suggestions-bar > .wrapper { transform: rotateX(180deg) }
+
+scented-widget {
+  width: 600px;
+  height: 320px;
+}
+
+#background {
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+
+  z-index: 1;
+}
+
+#vis {
+  grid-area: vis;
+}
+
+legend span[title]::after {
+  background: #666;
+  color: white;
+  display: inline-grid;
+  place-content: center;
+  font-weight: bold;
+  aspect-ratio: 1;
+  width: 1.4em;
+  height: 1.4em;
+  text-align: center;
+  border-radius: 100vh;
+  content: '?';
+  outline: 1px solid white;
+  outline-offset: -2px;
+  margin-inline: 0.5ex;
+  padding: 0.1em;
+  padding-bottom: 0.2em;
+}
+
+[inert] {
+  filter: brightness(80%) grayscale(50%);
+  pointer-events: none;
+  user-select: none;
+  cursor: wait !important;
+}
+
+[inert]::after {
+  content: 'Loading...';
+  background: var(--_color);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  font-size: xx-large;
+  color: white;
+  font-weight: 800;
+  --_color: hsla(0, 61.2%, 26.3%, 0.9);
+  outline: 5px solid var(--_color);
+  outline-offset: 5px;
+}
+
