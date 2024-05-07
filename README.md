@@ -11,12 +11,13 @@ Two quality measures and a suggestion system support the visual analysis through
 
 ## How to Cite
 
-This source code was created as part of a publication that will be presented as a short paper at IEEE VIS 2023 in Melbourne, Australia on October 22&ndash;27, 2023.
+This source code was created as part of a publication that was presented as a short paper at IEEE VIS 2023 in Melbourne, Australia on October 22&ndash;27, 2023.
 Citation:
 
 > Franke, M. and Koch, S:
 > "Compact Phase Histograms for Guided Exploration of Periodicity."
-> In: *Proceedings of the IEEE Visualization Conference (VIS),* 2023, forthcoming.
+> In *Proc. VIS.* IEEE, 2023, pp.&nbsp;191&ndash;195.
+> DOI: [10.1109/vis54172.2023.00047](https://dx.doi.org/10.1109/vis54172.2023.00047).
 
 BibTeX:
 
