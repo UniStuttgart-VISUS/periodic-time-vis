@@ -24,10 +24,12 @@ BibTeX:
 @inproceedings{franke2023periodicity,
   title = {Compact Phase Histograms for Guided Exploration of Periodicity},
   author = {Franke, Max and Koch, Steffen},
-  booktitle = {Proceedings of the IEEE Visualization Conference (VIS)},
-  note = {forthcoming},
+  booktitle = {Proc.\ VIS},
   year = {2023},
-  month = {10}
+  month = {10},
+  DOI = {10.1109/vis54172.2023.00047},
+  pages = {191--195},
+  publisher = {IEEE},
 }
 ```
 
