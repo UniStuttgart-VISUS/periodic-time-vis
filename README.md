@@ -55,6 +55,8 @@ BibTeX:
     $ ./run.sh 1234
     ```
 
+Alternatively, a Docker image can be found [here](https://zenodo.org/doi/10.5281/zenodo.11235075).
+
 
 ## Dataset-backend Interaction
 
